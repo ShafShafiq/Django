@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+   
+    <form method="POST">
+        {% csrf_token %}
+        
+        {% for field in form %}
+            <div class="form-group mb-3">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                    <div class="error-message mt-1">
+                        {% for error in field.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        
+        {% if form.non_field_errors %}
+            <div class="error-message mb-3">
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <a href="{% url 'notes.list' %}" class="btn btn-primary mt-3">Back</a>
+        <button type="submit" class="btn btn-primary mt-3">Save Note</button>
+        
+
+    </form>
+</div>
+{% endblock %}

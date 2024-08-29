@@ -1,0 +1,8 @@
+{%extends "base.html" %}
+
+{%block content%}
+        <h1>Welcome to the home page</h1>
+        <p>This is the home page of the website.</p>
+        <p>Today date is {{today}}</p>
+        <a href="{%url 'notes.list'%}" class="btn btn-primary" >Check out SmartNotes</a>
+{%endblock%}

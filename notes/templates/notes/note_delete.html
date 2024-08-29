@@ -1,0 +1,15 @@
+{% extends "base.html"%}
+
+{%block content%}
+
+                    
+                    <form method="POST">
+                        {% csrf_token %}
+                        <h2 class="card-title mb-4">Confirm Delete</h2>
+                        <p class="card-text">Are you sure you want to delete the note "{{ note.title }}"?</p>
+                        <a href="{% url 'notes.detail' note.id %}" class="btn btn-primary mt-auto align-self-start">Cancel</a>
+
+                        <input type="submit" class="btn btn-danger mr-2" value="Confirm"></input>
+                    </form>
+               
+{%endblock%}
